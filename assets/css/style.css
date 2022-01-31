@@ -1,23 +1,39 @@
-:root {
-    /* fix!!!! */
-    --primary: #ccdad1;
-    --secondary: #9caea9;
-    --tertiary: #788585;
-    --light-dark: #6f6866;
-    --dark: #38302e;
-    --border-radius: .3rem;
-  }
-  
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family:Arial, Helvetica, sans-serif;
-  }
+}
 
-h1,
+body {
+    margin: 0 auto;
+}
+
+header {
+    background-color: #a2d2ff;
+    padding: 3% 4%;
+}
+
+main {
+    margin: 20px auto;
+    width: 94%;
+}
+
+h1 {
+    color: navy;
+    font-size: 50px;
+    font-weight: 500;
+    margin: 0;
+    text-align: center;
+}
+
+h3 {
+    color: navy;
+    font-size: 20px;
+    font-weight:normal;
+}
+
 h2,
-h3,
 h4,
 h5,
 h6 {
@@ -25,62 +41,78 @@ h6 {
     margin: 0;
     color: var(--dark);
     line-height: 1.25;
-  }
-  
-main {
-    margin: 20px auto;
-    width: 94%;
-  }
+}
   
 p {
     font-size: 1.2rem;
-  }
-
-.hero {
-    /* fix!!!! */
-    padding: 3% 4%;
-    background-color: var(--dark);
-    color: var(--primary);
 }
 
 /* CARDS */
 .card {
     margin: 0 0 20px 0;
-    border: 3px solid var(--dark);
-    border-radius: var(--border-radius);
-  }
+    border: 3px solid #457b9d;
+    border-radius: 10px;
+    padding: 3%;
+}
   
 .card-header {
-    color: var(--primary);
-    background-color: var(--dark);
-    padding: 2.5%;
+    color: black;
+    background-color: #f5ebe0;
+    padding: 5%;
     border-radius: calc(.18rem - 1px) calc(.18rem - 1px) 0 0;
-  }
+}
   
 .card-body {
-    padding: 2.5%;
+    padding: 5%;
   }
   
 /* FORM */
 .form-label,
-.form-input,
-.form-textarea {
+.form-input {
     display: block;
-  }
+}
   
 .form-label {
     font-size: 1.1rem;
     margin: 0 0 0 5px;
-  }
+}
   
 .form-input {
     width: 100%;
     padding: 3%;
     margin: 5px 0;
     font-size: 1.2rem;
-    border: 2px solid var(--light-dark);
-    border-radius: var(--border-radius);
-  }
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+/* BUTTON */
+.btn {
+    background-color: #edede9;
+    color: black;
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 1%;
+}
+
+/* UV COLORS */
+.uv-favorable{
+    background-color: green;
+    border-radius: 5px;
+    color: white;
+}
+
+.uv-moderate{
+    background-color: yellow;
+    border-radius: 5px;
+    color: white;
+}
+
+.uv-severe{
+    background-color: red;
+    border-radius: 5px;
+    color: white;
+}
 
 /* HEIGHT / WIDTH UTILS */
 .min-100-vh {
