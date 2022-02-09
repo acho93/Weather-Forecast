@@ -2,6 +2,7 @@ var searchFormEl = document.querySelector("#search-form");
 var cityInputEl = document.querySelector("#cityname");
 var todayForecastEl = document.querySelector("#today-forecast");
 var fivedayForecastEl = document.querySelector("#fiveday-forecast");
+const weatherIconEl = document.getElementById("weather-icon");
 
 // Add other constants
 const cityNameEl = document.getElementById("#city-name");
@@ -12,10 +13,10 @@ var apiKey = "7a3dbfc8c9397a95663108b4ab8a286e";
 var formSubmitHandler = function (event) {
     event.preventDefault();
     var city = $("#cityname").val();
+
     if (city) {
         getForecast(city);
 
-        todayForecastEl.textContent = '';
         cityInputEl.value = '';
     } else {
         alert("Please enter a valid city!");
@@ -29,15 +30,21 @@ var getForecast = function (city) {
         .then(function (response) {
             return response.json();
         })
-
         .then(function (response) {
-            console.log("HELLO", response)
+            console.log(response)
             var weatherIcon = response.weather[0].icon;
             var currentTemp = response.main.temp;
             var currentWind = response.wind.speed;
             var currentHumid = response.main.humidity;
-
-            $("#today-forecast").addClass("#today-forecast");
+            var today = new Date();
+            today.toLocaleDateString("en-US")
+            
+            weatherIconEl.setAttribute("src", "https://openweathermap.org/img/wn/" + weatherIcon + "@2x.png");
+            $("#city-name").append(city + " (" + today.toLocaleDateString("en-US") + ") ");
+            $("#currentTemp").append("Temperature: " + currentTemp + "°F");
+            $("#currentWind").append("Wind: " + currentWind + " mph");
+            $("#currentHumid").append("Humidity: " + currentHumid + "%");
+            
             var lat = response.coord.lat;
             var lon = response.coord.lon;
 
@@ -60,16 +67,9 @@ var getForecast = function (city) {
                         uvIndex.setAttribute("class", "uv-severe");
                     }
                     uvIndex.innerHTML = uviData;
-                    // var currentUvEl = $("#uvIndex")
-                    // currentUvEl.innerHTML = "UV Index: ";
-                    currentUvEl.textContent = "UV Index: ";
-                    currentUvEl.append(uvIndex);
+                    $("#uvIndex").append("UV Index: " + uviData);
                 });
-
         })
-
-
-
 };
 
 

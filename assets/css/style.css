@@ -45,6 +45,7 @@ h6 {
   
 p {
     font-size: 1.2rem;
+    color: blue
 }
 
 /* CARDS */
@@ -57,7 +58,7 @@ p {
   
 .card-header {
     color: black;
-    background-color: #f5ebe0;
+    /* background-color: #f5ebe0; */
     padding: 5%;
     border-radius: calc(.18rem - 1px) calc(.18rem - 1px) 0 0;
 }
@@ -96,9 +97,9 @@ p {
 }
 
 /* CURRENT CONDITIONS */
-#today-forecast {
+/* #today-forecast {
     
-}
+} */
 
 /* UV COLORS */
 .uv-favorable{

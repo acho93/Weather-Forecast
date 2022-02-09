@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,9 +39,13 @@
 
         <section class="col-12 col-md-8">
             <h2>RESULTS GO HERE<span id="city-search-term"></span></h2>
-            
+
             <div id="today-forecast" class="card">
-                <h3 id="city-name" class="card-header"></h3>
+                <div class="flex-row">
+                    <h3 id="city-name" class="card-header"></h3>
+                    <img id="weather-icon" alt="">
+                </div>
+                
                 <div class="card-body">
                     <p id="currentDate"></p>
                     <p id="currentTemp"></p>
@@ -49,19 +54,21 @@
                     <p id="uvIndex"></p>
                 </div>
             </div>
-            <div id="test"></div>
-            
+
             <div id="fiveday-forecast" class="card">
                 <p>PUT FIVE DAY FORECAST</p>
             </div>
         </section>
 
     </main>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/homepage.js"></script>
 
 </body>
+
 </html>
