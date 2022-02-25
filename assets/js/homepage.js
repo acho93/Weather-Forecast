@@ -11,6 +11,22 @@ const fivedayIconEl = document.getElementById("#fiveday-icon");
 var apiKey = "7a3dbfc8c9397a95663108b4ab8a286e";
 var cityArray = [];
 
+var saveSearchHistory = function () {
+    localStorage.setItem("searchHistory", JSON.stringify(cityArray));
+};
+
+var getSearchHistory = function () {
+    var savedCities = localStorage.getItem("searchHistory");
+
+    if (savedCities) {
+        cityArray = JSON.parse(savedCities);
+    }
+
+    for (var i = 0; i < cityArray.length; i++) {
+        $("#search-history").append("<p><button class='btn'>" + cityArray[i] + "</button></p>");
+    }
+};
+
 var formSubmitHandler = function (event) {
     event.preventDefault();
     var city = $("#city-input").val();
@@ -22,6 +38,10 @@ var formSubmitHandler = function (event) {
     } else {
         alert("Please enter a valid city!");
     }
+
+    cityArray.push(city);
+    saveSearchHistory();
+    $("#search-history").append("<p><button class='btn'>" + city + "</button></p>");
 };
 
 var getForecast = function (city) {
