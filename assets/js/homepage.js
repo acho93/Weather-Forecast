@@ -1,18 +1,19 @@
 var searchFormEl = document.querySelector("#search-form");
-var cityInputEl = document.querySelector("#cityname");
+var cityInputEl = document.querySelector("#city-input");
 var todayForecastEl = document.querySelector("#today-forecast");
 var fivedayForecastEl = document.querySelector("#fiveday-forecast");
-const weatherIconEl = document.getElementById("weather-icon");
 
-// Add other constants
+const weatherIconEl = document.getElementById("weather-icon");
 const cityNameEl = document.getElementById("#city-name");
 const currentUvEl = document.getElementById("#uvIndex");
+
+const fivedayIconEl = document.getElementById("fiveday-icon");
 
 var apiKey = "7a3dbfc8c9397a95663108b4ab8a286e";
 
 var formSubmitHandler = function (event) {
     event.preventDefault();
-    var city = $("#cityname").val();
+    var city = $("#city-input").val();
 
     if (city) {
         getForecast(city);
@@ -69,6 +70,32 @@ var getForecast = function (city) {
                     uvIndex.innerHTML = uviData;
                     $("#uvIndex").append("UV Index: " + uviData);
                 });
+        })
+    
+    var apiFive = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&cnt=6&appid=" + apiKey;
+
+    fetch(apiFive)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (response) {
+            console.log(response)
+
+            $("#fiveday-forecast").append();
+
+            for (var i = 0; i <5; i++) {
+                var fivedayIcon = response.list[i].weather[0].icon;
+                var fivedayTemp = response.list[i].main.temp;
+                var fivedayWind = response.list[i].wind.speed;
+                var fivedayHumid = response.list[i].main.humidity;
+                var fivedayDate = moment().add(i + 1, 'days').format('L');
+                
+                $("#fivedayDate").append(fivedayDate);
+                fivedayIconEl.setAttribute("src", "https://openweathermap.org/img/wn/" + fivedayIcon + "@2x.png");
+                $("#fivedayTemp").append("Temperature: " + fivedayTemp + "°F");
+                $("#fivedayWind").append("Wind: " + fivedayWind + " mph");
+                $("fivedayHumid").append("Humidity: " + fivedayHumid + "%");
+            }
         })
 };
 

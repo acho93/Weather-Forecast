@@ -58,7 +58,6 @@ p {
   
 .card-header {
     color: black;
-    /* background-color: #f5ebe0; */
     padding: 5%;
     border-radius: calc(.18rem - 1px) calc(.18rem - 1px) 0 0;
 }
