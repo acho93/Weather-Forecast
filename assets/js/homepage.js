@@ -3,13 +3,13 @@ var cityInputEl = document.querySelector("#city-input");
 var todayForecastEl = document.querySelector("#today-forecast");
 var fivedayForecastEl = document.querySelector("#fiveday-forecast");
 
-const weatherIconEl = document.getElementById("weather-icon");
 const cityNameEl = document.getElementById("#city-name");
+const weatherIconEl = document.getElementById("weather-icon");
 const currentUvEl = document.getElementById("#uvIndex");
-
-const fivedayIconEl = document.getElementById("fiveday-icon");
+const fivedayIconEl = document.getElementById("#fiveday-icon");
 
 var apiKey = "7a3dbfc8c9397a95663108b4ab8a286e";
+var cityArray = [];
 
 var formSubmitHandler = function (event) {
     event.preventDefault();
@@ -83,12 +83,12 @@ var getForecast = function (city) {
 
             $("#fiveday-forecast").append();
 
-            for (var i = 0; i <5; i++) {
+            for (var i = 0; i < 5; i++) {
+                var fivedayDate = moment().add(i + 1, 'days').format('L');
                 var fivedayIcon = response.list[i].weather[0].icon;
                 var fivedayTemp = response.list[i].main.temp;
                 var fivedayWind = response.list[i].wind.speed;
                 var fivedayHumid = response.list[i].main.humidity;
-                var fivedayDate = moment().add(i + 1, 'days').format('L');
                 
                 $("#fivedayDate").append(fivedayDate);
                 fivedayIconEl.setAttribute("src", "https://openweathermap.org/img/wn/" + fivedayIcon + "@2x.png");
