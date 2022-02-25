@@ -27,6 +27,16 @@ var getSearchHistory = function () {
     }
 };
 
+var emptyStorage = function () {
+    $("#city-name").empty();
+    $("#currentDate").empty();
+    $("#currentTemp").empty();
+    $("#currentWind").empty();
+    $("#currentHumid").empty();
+    $("#uvIndex").empty();
+    // ADD DATA FOR CLEARING FIVE DAY
+  };
+
 var formSubmitHandler = function (event) {
     event.preventDefault();
     var city = $("#city-input").val();
@@ -42,6 +52,8 @@ var formSubmitHandler = function (event) {
     cityArray.push(city);
     saveSearchHistory();
     $("#search-history").append("<p><button class='btn'>" + city + "</button></p>");
+
+    emptyStorage();
 };
 
 var getForecast = function (city) {
@@ -119,10 +131,5 @@ var getForecast = function (city) {
         })
 };
 
-
-
-// var displayResults = function (cities, searchTerm) {
-
-// };
-
 searchFormEl.addEventListener("submit", formSubmitHandler);
+
