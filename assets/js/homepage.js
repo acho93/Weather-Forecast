@@ -37,6 +37,12 @@ var emptyStorage = function () {
     // ADD DATA FOR CLEARING FIVE DAY
   };
 
+$("#reset").click(function () {
+    cityArray = [];
+    localStorage.clear();
+    $("#search-history").empty();
+})
+
 var formSubmitHandler = function (event) {
     event.preventDefault();
     var city = $("#city-input").val();
@@ -132,4 +138,5 @@ var getForecast = function (city) {
 };
 
 searchFormEl.addEventListener("submit", formSubmitHandler);
+  
 
