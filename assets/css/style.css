@@ -95,28 +95,38 @@ p {
     padding: 1%;
 }
 
-/* CURRENT CONDITIONS */
-/* #today-forecast {
-    
-} */
+.btn-color {
+  background-color: skyblue;
+  color: black;
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 1%;
+}
 
 /* UV COLORS */
 .uv-favorable{
     background-color: green;
     border-radius: 5px;
-    color: white;
+    color: black;
 }
 
 .uv-moderate{
     background-color: yellow;
     border-radius: 5px;
-    color: white;
+    color: black;
 }
 
 .uv-severe{
     background-color: red;
     border-radius: 5px;
-    color: white;
+    color: black;
+}
+
+/* FIVE-DAY CARDS */
+.fiveContainer{
+    display: inline-grid;
+    width: 250px;
+    margin: 20px;
 }
 
 /* HEIGHT / WIDTH UTILS */
@@ -274,8 +284,7 @@ p {
       flex: 0 0 100%;
     }
   }
-  
-  
+
   /* col-md */
   @media screen and (min-width: 768px) {
     .col-md-1 {

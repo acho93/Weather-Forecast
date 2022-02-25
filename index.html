@@ -40,12 +40,12 @@
             <span id="city-search-term"></span>
 
             <div id="today-forecast" class="card">
-                <div class="flex-row">
+                <div class="flex-row today-row">
                     <h3 id="city-name" class="card-header"></h3>
                     <img id="weather-icon" alt="">
                 </div>
                 
-                <div class="card-body">
+                <div class="card-body card-body-today">
                     <p id="currentDate"></p>
                     <p id="currentTemp"></p>
                     <p id="currentWind"></p>
@@ -54,14 +54,9 @@
                 </div>
             </div>
 
-            <div id="fiveday-forecast" class="card">
+            <div id="fiveday-forecast" class="card card-header">
                 <h3>5-Day Forecast:</h3><br>
-                <div class="card-body">
-                    <p id="fivedayDate"></p>
-                    <p id="fiveday-icon"></p>
-                    <p id="fivedayTemp"></p>
-                    <p id="fivedayWind"></p>
-                    <p id="fivedayHumid"></p>
+                <div id="fiveday-card">
                 </div>
             </div>
         </section>
