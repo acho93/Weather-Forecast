@@ -95,14 +95,6 @@ p {
     padding: 1%;
 }
 
-.btn-color {
-  background-color: skyblue;
-  color: black;
-  margin-top: 10px;
-  border-radius: 5px;
-  padding: 1%;
-}
-
 /* UV COLORS */
 .uv-favorable{
     background-color: green;

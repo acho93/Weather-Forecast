@@ -74,7 +74,7 @@ var formSubmitHandler = function (event) {
 
     cityArray.push(city);
     saveSearchHistory();
-    $("#search-history").append("<p><button class='btn btn-color'>" + city + "</button></p>");
+    $("#search-history").append("<p><button class='btn'>" + city + "</button></p>");
     
     emptyStorage();
 };
