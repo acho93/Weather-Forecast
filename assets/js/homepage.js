@@ -22,9 +22,16 @@ var getSearchHistory = function () {
     }
 
     for (var i = 0; i < cityArray.length; i++) {
-        $("#search-history").append("<p><button class='btn'>" + cityArray[i] + "</button></p>");
+        var city = cityArray[i]
+        if (i==0) {
+            getForecast(city);
+            fivedayForecast(city);
+        }
+        $("#search-history").append("<p><button class='btn'>" + city + "</button></p>");
     }
 };
+
+getSearchHistory();
 
 var emptyStorage = function () {
     $("#city-name").empty();
@@ -45,6 +52,13 @@ $("#reset").click(function () {
     emptyStorage();
 })
 
+$(document).on("click","#search-history > p > .btn",function (event) {
+    var city = $(this).text()
+
+    getForecast(city);
+    fivedayForecast(city);
+})
+
 var formSubmitHandler = function (event) {
     event.preventDefault();
     var city = $("#city-input").val();
@@ -60,13 +74,12 @@ var formSubmitHandler = function (event) {
 
     cityArray.push(city);
     saveSearchHistory();
-    
-    $("#search-history").append("<p><button class='btn-color'>" + city + "</button></p>");
+    $("#search-history").append("<p><button class='btn btn-color'>" + city + "</button></p>");
     
     emptyStorage();
 };
 
-var getForecast = function (city) {
+function getForecast (city) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + "&appid=" + apiKey;
 
     fetch(apiUrl)
@@ -82,6 +95,12 @@ var getForecast = function (city) {
             var today = new Date();
             today.toLocaleDateString("en-US")
             
+            var forecastData = $("#today-forecast > .card-body-today > p")
+            forecastData.empty();
+
+            var nameData = $("#today-forecast #city-name")
+            nameData.empty();
+
             weatherIconEl.setAttribute("src", "https://openweathermap.org/img/wn/" + weatherIcon + "@2x.png");
             $("#city-name").append(city + " (" + today.toLocaleDateString("en-US") + ") ");
             $("#currentTemp").append("Temperature: " + currentTemp + "°F");
@@ -117,7 +136,7 @@ var getForecast = function (city) {
         })
 };
 
-var fivedayForecast = function (city) {
+function fivedayForecast (city) {
     var apiFive = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&cnt=6&appid=" + apiKey;
 
     fetch(apiFive)
